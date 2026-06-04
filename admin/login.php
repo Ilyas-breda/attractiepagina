@@ -1,5 +1,7 @@
 <?php
+// Start de sessie voor het inloggen
 session_start();
+// Laad het configuratiebestand
 require_once 'backend/config.php';
 ?>
 
@@ -19,16 +21,20 @@ require_once 'backend/config.php';
 
 <body>
 
-    <?php require_once '../header.php'; ?>
+    <?php // Laad de header in uit de map erboven 
+    require_once '../header.php'; ?>
     <div class="container">
 
         <?php
+        // Command: Controleer of er een melding (zoals een foutmelding) in de URL staat
         if(isset($_GET['msg']))
         {
+            // Command: Toon de melding op het scherm in een div-blok
             echo "<div class='msg'>" . $_GET['msg'] . "</div>";
         }
         ?>
 
+        <!-- Command: Formulier stuurt de logingegevens veilig via POST naar de loginController -->
         <form action="backend/loginController.php" method="POST">
             <div class="form-group">
                 <label for="username">Gebruikersnaam:</label>
@@ -38,6 +44,7 @@ require_once 'backend/config.php';
                 <label for="password">Wachtwoord:</label>
                 <input type="password" name="password" id="password" placeholder="pass1 t/m 3">
             </div>
+            <!-- Inlogknop om het formulier te verzenden -->
             <input type="submit" value="Login">
         </form>
     </div>
