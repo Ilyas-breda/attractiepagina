@@ -11,31 +11,36 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+/* Standaard instellingen voor de hele pagina */
 html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+  color: #222; /* Geeft tekst een donkergrijze kleur */
+  font-size: 1em; /* Standaard lettergrootte */
+  line-height: 1.4; /* Ruimte tussen de tekstregels */
 }
 
+/* Verandert de achtergrondkleur als je tekst selecteert (sleept met je muis) in Firefox */
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
+/* Verandert de achtergrondkleur als je tekst selecteert in andere browsers */
 ::selection {
   background: #b3d4fc;
   text-shadow: none;
 }
 
+/* Styling voor een horizontale lijn (<hr>) */
 hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #ccc; /* Maakt een dun grijs lijntje */
   margin: 1em 0;
   padding: 0;
 }
 
+/* Zorgt ervoor dat media-elementen netjes uitlijnen met de tekst */
 audio,
 canvas,
 iframe,
@@ -45,12 +50,14 @@ video {
   vertical-align: middle;
 }
 
+/* Verwijdert de standaard randen rondom een formulier-groep */
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
 
+/* Zorgt ervoor dat een groot tekstvak alleen verticaal groter/kleiner gesleept kan worden */
 textarea {
   resize: vertical;
 }
@@ -68,19 +75,21 @@ html {
 body {
     /* Command: Gebruik het Roboto lettertype voor alle teksten */
     font-family: Roboto, sans-serif;
-    background-color: #fcfdfd;
+    background-color: #fcfdfd; /* Een heel lichtgrijze, bijna witte achtergrond */
 }
 
+/* Geeft de buitenste container witruimte aan de linker- en rechterkant */
 .container {
     margin-left: 4rem;
     margin-right: 5rem;
 }
 
+/* Styling voor een meldingen-box (bijvoorbeeld een succesmelding) */
 .msg {
     margin: 1rem 0;
     padding: 1rem;
-    background-color: #3ED67D;
-    border-radius: 4px;
+    background-color: #3ED67D; /* Felgroene achtergrond */
+    border-radius: 4px; /* Subtiele ronde hoeken */
 }
 
 /* HEADER + NAV */
@@ -88,7 +97,7 @@ body {
     /* Command: Zet logo, titel en menu netjes naast elkaar op één lijn */
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Verdeelt de ruimte tussen de onderdelen */
 }
 
 /* LAYOUT HOOFDCONTAINER */
@@ -96,11 +105,12 @@ body {
     /* Command: Splits het scherm in een zijbalk van 250px en de rest voor de kaarten */
     display: grid;
     grid-template-columns: 250px 1fr;
-    margin-top: 3rem;
-    column-gap: 5rem;
-    align-items: start;
+    margin-top: 3rem; /* Ruimte aan de bovenkant */
+    column-gap: 5rem; /* Ruimte tussen de zijbalk spin en de attracties */
+    align-items: start; /* Zorgt dat de zijbalk niet onnodig lang naar beneden rekt */
 }
 
+/* De bovenbalk van de website */
 header {
     font-size: 1.25rem;
     padding-top: 1rem;
@@ -108,75 +118,85 @@ header {
     /* Command: Voeg de achtergrondafbeelding toe aan de header */
     background-image: url(../img/park01.jpg);
     background-position: center;
+    /* Legt een donkergroene, half-transparante laag over de afbeelding voor betere leesbaarheid */
     box-shadow: inset 0 0 0 1000px rgba(29, 98, 58, 0.5);
 }
 
+/* Maakt de tekstkleur van de header en de links in het menu wit/lichtgroen */
 header, nav a {
     color: #f5fcf8;
 }
 
+/* Zorgt dat het logo maximaal 250 pixels breed wordt */
 .logo {
     max-width: 250px;
 }
 
+/* Zorgt dat de navigatielinks helemaal naar rechts worden geduwd */
 header nav {
     flex-grow: 1;
     text-align: right;
 }
 
+/* Styling voor de hoofdtitel in de header */
 header h1 {
-    font-family: Oxanium;
-    font-weight: 600;
+    font-family: Oxanium; /* Gebruikt het Oxanium lettertype */
+    font-weight: 600; /* Maakt de tekst dikgedrukt */
     margin: 0 5rem;
-    text-shadow: 0 0 7px black;
+    text-shadow: 0 0 7px black; /* Geeft de letters een zwarte gloed/schaduw */
 }
 
 /* FORMS EN INVOERVELDEN VAN DE BEHEERPAGINA */
 .form-group {
-    margin: 1rem 0;
+    margin: 1rem 0; /* Ruimte boven en onder een invoerveld */
 }
 
+/* Styling voor de tekstlabels voor invoervelden */
 label {
-    cursor: pointer;
+    cursor: pointer; /* Verandert de muis in een handje */
     display: inline-block;
-    min-width: 140px;
+    min-width: 140px; /* Zorgt dat alle labels even breed zijn, zodat velden uitlijnen */
     vertical-align: top;
 }
 
+/* Maakt de invoervelden op de beheerpagina 600 pixels breed */
 .form-input {
     width: 600px;
 }
 
 /* TABELLEN VAN DE ADMIN OVERZICHTEN */
 table {
-    width: 100%;
+    width: 100%; /* Maakt de tabel zo breed als het scherm */
 }
 
 th {
-    text-align: left;
+    text-align: left; /* Zorgt dat de tabelkoppen links uitlijnen */
 }
 
+/* Uitgebreide tabelstyling binnen de container */
 .container table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Haalt dubbele randen tussen cellen weg */
     margin-top: 20px;
     font-family: 'Roboto', sans-serif;
 }
 
+/* Styling voor de koppen van de tabel */
 .container th {
     font-family: 'Oxanium', sans-serif;
     font-weight: 600; 
-    padding: 12px;
+    padding: 12px; /* Ruimte binnen de cel */
     text-align: left;
     color: #0B351D; 
-    border-bottom: 2px solid #E5E5E5; 
+    border-bottom: 2px solid #E5E5E5; /* Dikke streep onder de koppen */
 }
 
+/* Styling voor de gewone cellen in de tabel */
 .container td {
     padding: 12px;
     text-align: left;
     color: #0B351D; 
-    border-bottom: 1px solid #E5E5E5; 
+    border-bottom: 1px solid #E5E5E5; /* Dunne streep tussen de rijen */
 }
 
 .container tr:nth-child(odd) {
@@ -189,6 +209,7 @@ th {
     background-color: #FFFFFF;
 }
 
+/* Maakt specifieke kolommen (themagebied en lengte) iets lichter van kleur */
 .container td.themagebied, 
 .container td.lengte {
     color: #849D8E;
@@ -203,7 +224,7 @@ th {
 .sidebar-filters {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 15px; /* Ruimte van 15 pixels tussen de filters */
 }
 
 .filter-group {
@@ -222,7 +243,7 @@ th {
     font-family: Roboto, sans-serif;
     font-size: 0.95rem;
     color: #24292f;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Zorgt dat padding de box niet ongewenst breder maakt */
 }
 
 /* Command: Plaats de zoekknop met de loep precies aan de rechterkant in het invoerveld */
@@ -230,7 +251,7 @@ th {
     position: absolute;
     right: 12px;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Zorgt dat de loep perfect verticaal gecentreerd staat */
     background: none;
     border: none;
     cursor: pointer;
@@ -240,13 +261,14 @@ th {
 /* Command: Styling voor de 'Filters wissen' link knop */
 .clear-filters-btn {
     display: inline-block;
-    color: #cf222e;
-    text-decoration: none;
+    color: #cf222e; /* Een rode kleur */
+    text-decoration: none; /* Verwijdert de standaard onderstreping */
     font-size: 0.9rem;
     font-weight: bold;
     margin-top: 5px;
 }
 
+/* Zorgt dat er een onderstreping verschijnt als je met de muis over de 'wissen' knop gaat */
 .clear-filters-btn:hover {
     text-decoration: underline;
 }
@@ -259,8 +281,9 @@ th {
 /* Command: Toon de kaarten in een flexibel grid dat zich automatisch aanpast aan de breedte */
 .attracties {
     display: grid;
+    /* auto-fill berekent zelf hoeveel kaarten van minimaal 280px naast elkaar passen */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
+    gap: 25px; /* Ruimte tussen de kaartjes */
     width: 100%;
 }
 
@@ -269,13 +292,14 @@ th {
     background: #ffffff;
     border: 1px solid #e1e4e6;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; /* Zorgt dat de afbeelding niet buiten de ronde hoeken steekt */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Zorgt voor een vloeiende animatie bij hover */
 }
 
+/* Laat de kaart een klein stukje omhoog bewegen en geeft meer schaduw als je er met de muis op staat */
 .attractie-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
@@ -285,7 +309,7 @@ th {
 .card-image img {
     width: 100%;
     height: 190px;
-    object-fit: cover;
+    object-fit: cover; /* Snijdt de afbeelding netjes af zodat hij in de box past */
     display: block;
 }
 
@@ -294,7 +318,7 @@ th {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex-grow: 1; /* Duwt de inhoud uit zodat alle kaarten even hoog worden */
 }
 
 /* Command: Het themagebied in grijze, kleine letters bovenaan */
@@ -302,7 +326,7 @@ th {
     font-size: 0.8rem;
     color: #57606a;
     font-weight: bold;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.5px; /* Zet de letters iets verder uit elkaar */
     margin: 0 0 6px 0;
 }
 
@@ -321,13 +345,13 @@ th {
     color: #57606a;
     line-height: 1.5;
     margin: 0 0 16px 0;
-    flex-grow: 1;
+    flex-grow: 1; /* Zorgt dat dit tekstvak alle overige ruimte pakt, zodat de lengte-tekst altijd onderaan staat */
 }
 
 /* Command: De minimale lengte tekst onderaan de kaart */
 .attractie-card .length {
     font-size: 0.9rem;
-    color: #2da44e;
+    color: #2da44e; /* Groene kleur */
     font-weight: bold;
     margin: auto 0 12px 0;
 }
@@ -343,7 +367,7 @@ th {
     font-size: 0.85rem;
     text-align: center;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Maakt er automatisch HOOFDLETTERS van */
 }
 
 
@@ -351,25 +375,36 @@ th {
    Helper classes & Media Queries
    ========================================================================== */
 
+/* Verbergt elementen volledig */
 .hidden, [hidden] { display: none !important; }
 
+/* Verbergt tekst visueel, maar houdt het leesbaar voor screenreaders (voor blinden) */
 .sr-only {
   border: 0; clip: rect(0, 0, 0, 0); height: 1px; margin: -1px;
   overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px;
 }
 
+/* Maakt een element onzichtbaar maar behoudt wel de ruimte die het inneemt */
 .invisible { visibility: hidden; }
 
+/* Een oude techniek om zwevende (floated) elementen netjes binnen hun box te houden */
 .clearfix::before, .clearfix::after { content: " "; display: table; }
 .clearfix::after { clear: both; }
 
+/* MEDIA QUERY: Dit voert code uit als het scherm 768 pixels of smaller is (zoals telefoons) */
 @media (max-width: 768px) {
-  /* Command: Schakel over naar één kolom op kleinere beeldschermen */
+  /* Command: Schakel over naar één kolom op kleinere beeldschermen zodat de filters boven de kaarten komen te staan */
   .container.content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    row-gap: 2rem;
   }
-  .sidebar-filters {
-    margin-bottom: 1.5rem;
+  
+  /* Command: Maakt de header/bovenbalk ook flexibel voor kleinere schermen */
+  .container.header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
 }
