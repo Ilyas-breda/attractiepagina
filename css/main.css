@@ -1,6 +1,6 @@
-/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com */
 
-/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/* main.css 2.1.0 | MIT License | https://github.com */
 /*
  * What follows is the result of much research on cross-browser styling.
  * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
@@ -17,16 +17,6 @@ html {
   line-height: 1.4;
 }
 
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Vendor-prefixed and regular ::selection selectors cannot be combined:
- * https://stackoverflow.com/a/16982510/7133471
- *
- * Customize the background color to match your design.
- */
-
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
@@ -37,10 +27,6 @@ html {
   text-shadow: none;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
 hr {
   display: block;
   height: 1px;
@@ -49,12 +35,6 @@ hr {
   margin: 1em 0;
   padding: 0;
 }
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
 
 audio,
 canvas,
@@ -65,19 +45,11 @@ video {
   vertical-align: middle;
 }
 
-/*
- * Remove default fieldset styles.
- */
-
 fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
-
-/*
- * Allow only vertical resizing of textareas.
- */
 
 textarea {
   resize: vertical;
@@ -87,24 +59,24 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
 /* ALGEMEEN */
-html{
+html {
     /* Command: Zet de basislettergrootte van de website op 16 pixels */
     font-size: 16px;
 }
 
-body{
+body {
     /* Command: Gebruik het Roboto lettertype voor alle teksten */
     font-family: Roboto, sans-serif;
+    background-color: #fcfdfd;
 }
 
-.container{
+.container {
     margin-left: 4rem;
     margin-right: 5rem;
 }
 
-.msg{
+.msg {
     margin: 1rem 0;
     padding: 1rem;
     background-color: #3ED67D;
@@ -112,21 +84,24 @@ body{
 }
 
 /* HEADER + NAV */
-.container.header{
+.container.header {
     /* Command: Zet logo, titel en menu netjes naast elkaar op één lijn */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.container.content{
+/* LAYOUT HOOFDCONTAINER */
+.container.content {
+    /* Command: Splits het scherm in een zijbalk van 250px en de rest voor de kaarten */
     display: grid;
     grid-template-columns: 250px 1fr;
     margin-top: 3rem;
     column-gap: 5rem;
+    align-items: start;
 }
 
-header{
+header {
     font-size: 1.25rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -136,244 +111,49 @@ header{
     box-shadow: inset 0 0 0 1000px rgba(29, 98, 58, 0.5);
 }
 
-header, nav a{
+header, nav a {
     color: #f5fcf8;
 }
 
-.logo{
+.logo {
     max-width: 250px;
 }
 
-header nav{
+header nav {
     flex-grow: 1;
     text-align: right;
 }
 
-header h1{
+header h1 {
     font-family: Oxanium;
     font-weight: 600;
     margin: 0 5rem;
     text-shadow: 0 0 7px black;
 }
 
-/* FORMS */
-.form-group{
+/* FORMS EN INVOERVELDEN VAN DE BEHEERPAGINA */
+.form-group {
     margin: 1rem 0;
 }
 
-label{
+label {
     cursor: pointer;
     display: inline-block;
     min-width: 140px;
     vertical-align: top;
 }
 
-.form-input{
+.form-input {
     width: 600px;
 }
 
-/* TABELLEN */
-table{
+/* TABELLEN VAN DE ADMIN OVERZICHTEN */
+table {
     width: 100%;
 }
 
-th{
+th {
     text-align: left;
-}
-
-
-
-
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden,
-[hidden] {
-  display: none !important;
-}
-
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  width: 1px;
-  /* 1 */
-}
-
-/*
- * Extends the .sr-only class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.sr-only.focusable:active,
-.sr-only.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  white-space: inherit;
-  width: auto;
-}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix::before,
-.clearfix::after {
-  content: " ";
-  display: table;
-}
-
-.clearfix::after {
-  clear: both;
-}
-
-/* ==========================================================================
-   EXAMPLE Media Queries for Responsive Design.
-   These examples override the primary ('mobile first') styles.
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */
-}
-
-@media print,
-  (-webkit-min-device-pixel-ratio: 1.25),
-  (min-resolution: 1.25dppx),
-  (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   https://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
-
-@media print {
-  *,
-  *::before,
-  *::after {
-    background: #fff !important;
-    color: #000 !important;
-    /* Black prints faster */
-    box-shadow: none !important;
-    text-shadow: none !important;
-  }
-
-  a,
-  a:visited {
-    text-decoration: underline;
-  }
-
-  a[href]::after {
-    content: " (" attr(href) ")";
-  }
-
-  abbr[title]::after {
-    content: " (" attr(title) ")";
-  }
-
-  /*
-   * Don't show links that are fragment identifiers,
-   * or use the `javascript:` pseudo protocol
-   */
-  a[href^="#"]::after,
-  a[href^="javascript:"]::after {
-    content: "";
-  }
-
-  pre {
-    white-space: pre-wrap !important;
-  }
-
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  /*
-   * Printing Tables:
-   * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
-   */
-  thead {
-    display: table-header-group;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
-  p,
-  h2,
-  h3 {
-    orphans: 3;
-    widows: 3;
-  }
-
-  h2,
-  h3 {
-    page-break-after: avoid;
-  }
-}
-
-.attracties{
-  /* Command: Toon de attracties netjes in 3 kolommen naast elkaar */
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.attracties .attractie img{
-  width: 90%;
-}
-
-@media (max-width: 600px){
-  .attracties{
-    /* Command: Zet de attracties onder elkaar op mobiele schermen (max 600px) */
-    display: block;
-  }
 }
 
 .container table {
@@ -411,10 +191,185 @@ th{
 
 .container td.themagebied, 
 .container td.lengte {
-    color: #849D8E; 
+    color: #849D8E;
 }
 
-.container tr:hover {
-    /* Command: Laat de rij grijs oplichten als je er met de muis overheen gaat */
-    background-color: #E5E5E5;
+
+/* ==========================================================================
+   NIEUW: SIDEBAR EN FILTERS STYLING (LINKS)
+   ========================================================================== */
+
+/* Command: Richt de filters in de zijbalk netjes verticaal onder elkaar in */
+.sidebar-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-group {
+    position: relative;
+    width: 100%;
+}
+
+/* Command: Styling voor de dropdowns en de zoekbalk invoer */
+.sidebar-filters select, 
+.sidebar-filters input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    background-color: #ffffff;
+    font-family: Roboto, sans-serif;
+    font-size: 0.95rem;
+    color: #24292f;
+    box-sizing: border-box;
+}
+
+/* Command: Plaats de zoekknop met de loep precies aan de rechterkant in het invoerveld */
+.search-box .search-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Command: Styling voor de 'Filters wissen' link knop */
+.clear-filters-btn {
+    display: inline-block;
+    color: #cf222e;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.clear-filters-btn:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================================
+   NIEUW: GRID INDELING EN GEBOUWDE ATTRACTIEKAARTEN (RECHTS)
+   ========================================================================== */
+
+/* Command: Toon de kaarten in een flexibel grid dat zich automatisch aanpast aan de breedte */
+.attracties {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+/* Command: De basis styling van een kaart met ronde hoeken en een subtiele schaduw */
+.attractie-card {
+    background: #ffffff;
+    border: 1px solid #e1e4e6;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.attractie-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Command: Zorg dat afbeeldingen de bovenkant vullen zonder te rekken of te vervormen */
+.card-image img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Command: Ruimte aan de binnenkant van de kaart voor de teksten */
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Command: Het themagebied in grijze, kleine letters bovenaan */
+.ride-area {
+    font-size: 0.8rem;
+    color: #57606a;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin: 0 0 6px 0;
+}
+
+/* Command: De titel van de attractie dikgedrukt en donkergrijze letters */
+.ride-title {
+    font-family: Roboto, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #24292f;
+    margin: 0 0 12px 0;
+}
+
+/* Command: De beschrijvingstekst krijgt een rustige kleur en regelhoogte */
+.ride-description {
+    font-size: 0.95rem;
+    color: #57606a;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+    flex-grow: 1;
+}
+
+/* Command: De minimale lengte tekst onderaan de kaart */
+.attractie-card .length {
+    font-size: 0.9rem;
+    color: #2da44e;
+    font-weight: bold;
+    margin: auto 0 12px 0;
+}
+
+/* Command: De felgroene, rechthoekige FAST PASS badge onderaan de kaart */
+.badge.fast-pass {
+    display: block;
+    background-color: #2ecc71;
+    color: #ffffff;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+
+/* ==========================================================================
+   Helper classes & Media Queries
+   ========================================================================== */
+
+.hidden, [hidden] { display: none !important; }
+
+.sr-only {
+  border: 0; clip: rect(0, 0, 0, 0); height: 1px; margin: -1px;
+  overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px;
+}
+
+.invisible { visibility: hidden; }
+
+.clearfix::before, .clearfix::after { content: " "; display: table; }
+.clearfix::after { clear: both; }
+
+@media (max-width: 768px) {
+  /* Command: Schakel over naar één kolom op kleinere beeldschermen */
+  .container.content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .sidebar-filters {
+    margin-bottom: 1.5rem;
+  }
 }
