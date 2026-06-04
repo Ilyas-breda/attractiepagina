@@ -32,11 +32,19 @@ if(!isset($_SESSION['user_id']))
 
         <?php
         require_once '../backend/conn.php';
-        $query = "SELECT * FROM rides";
+        
+        // OPDRACHT: Sorteren op titel toegevoegd (ORDER BY title ASC)
+        $query = "SELECT * FROM rides ORDER BY title ASC";
         $statement = $conn->prepare($query);
         $statement->execute();
         $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        // OPDRACHT: Tel het aantal attracties voor de teller
+        $aantal_attracties = count($rides);
         ?>
+
+        <!-- OPDRACHT: Teller bovenaan de tabel geplaatst -->
+        <p><strong>De lijst bevat <?php echo $aantal_attracties; ?> attracties.</strong></p>
 
         <table>
             <tr>
@@ -44,13 +52,29 @@ if(!isset($_SESSION['user_id']))
                 <th>Themagebied</th>
                 <th>Min. lengte</th>
                 <th>Fastpass</th>
+                <th>Acties</th>
             </tr>
             <?php foreach($rides as $ride): ?>
                 <tr>
-                    <td><?php echo $ride['title']; ?></td>
-                    <td><?php echo $ride['themeland']; ?></td>
-                    <td><?php echo $ride['min_length']; ?></td>
-                    <td><?php echo $ride['fast_pass']; ?></td>
+                    <td><?php echo htmlentities($ride['title']); ?></td>
+                    
+                    <!-- AANPASSING: Eerste letter een hoofdletter via ucfirst() -->
+                    <td class="themagebied"><?php echo htmlentities(ucfirst($ride['themeland'])); ?></td>
+                    
+                    <!-- AANPASSING: Eenheid cm erachter geplakt (als er een lengte is ingevuld) -->
+                    <td class="lengte">
+                        <?php 
+                        if(!empty($ride['min_length'])) {
+                            echo htmlentities($ride['min_length']) . " cm"; 
+                        } else {
+                            echo "-";
+                        }
+                        ?>
+                    </td>
+                    
+                    <!-- AANPASSING: 1 of 0 omzetten naar Ja of Nee -->
+                    <td><?php echo ($ride['fast_pass'] == 1) ? 'Ja' : 'Nee'; ?></td>
+                    
                     <td><a href="edit.php?id=<?php echo $ride['id']; ?>">aanpassen</a></td>
                 </tr>
             <?php endforeach; ?>

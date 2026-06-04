@@ -25,7 +25,27 @@ require_once 'admin/backend/config.php';
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia modi dolore magnam! Iste libero voluptatum autem, sapiente ullam earum nostrum sed magnam vel laboriosam quibusdam, officia, esse vitae dignissimos nulla?
         </aside>
         <main>
-            <!-- hier komen de attractiekaartjes -->
+            <div class="attracties">
+                <?php
+                require_once 'admin/backend/conn.php';
+                $query = "SELECT * FROM rides ORDER BY title";
+                $statement = $conn->prepare($query);
+                $statement->execute();
+                $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach($rides as $ride){
+                ?>
+                <div class="attractie">
+                    <img src="img\attracties\laurie-byrne-EtKSaG-PRbY-unsplash.jpg" alt="Achtbaan met looping">
+                    <h3> Rustige Attractie </h3>
+                    <h2> Looping </h2>
+                    <p> Hier staat tekst over de attractie.</p>
+                    <p class="length">1cm</p>
+                </div>   
+                <?php  
+                }  
+                ?>     
+            </div>
         </main>
     </div>
 

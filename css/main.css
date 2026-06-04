@@ -355,3 +355,58 @@ th{
   }
 }
 
+.attracties{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+}
+
+.attracties .attractie img{
+  width: 90%;
+}
+
+@media (max-width: 600px){
+  .attracties{
+    display: block;
+  }
+}
+
+.container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container th {
+    font-family: 'Oxanium', sans-serif;
+    font-weight: 600; 
+    padding: 12px;
+    text-align: left;
+    color: #0B351D; 
+    border-bottom: 2px solid #E5E5E5; 
+}
+
+.container td {
+    padding: 12px;
+    text-align: left;
+    color: #0B351D; 
+    border-bottom: 1px solid #E5E5E5; 
+}
+
+.container tr:nth-child(odd) {
+    background-color: #F5FCF8;
+}
+
+.container tr:nth-child(even) {
+    background-color: #FFFFFF;
+}
+
+.container td.themagebied, 
+.container td.lengte {
+    color: #849D8E; 
+}
+
+.container tr:hover {
+    background-color: #E5E5E5;
+}

@@ -24,6 +24,10 @@ if($action == 'create')
         $errors[] = "Vul een themagebied in!";
     }
 
+    // OPDRACHT: Data opvangen van de nieuwe velden
+    $description = $_POST['description'];
+    $min_length = !empty($_POST['min_length']) ? intval($_POST['min_length']) : null;
+
     if(isset($_POST['fast_pass']))
     {
         $fast_pass = true;
@@ -35,7 +39,7 @@ if($action == 'create')
 
     $target_dir = "../../img/attracties/";
     $target_file = $_FILES['img_file']['name'];
-    if(file_exists($target_dir . $target_file))
+    if(!empty($target_file) && file_exists($target_dir . $target_file))
     {
         $errors[] = "Bestand bestaat al!";
     }
@@ -47,21 +51,25 @@ if($action == 'create')
         die();
     }
 
-    //Plaats geuploade bestand in map
-    move_uploaded_file($_FILES['img_file']['tmp_name'], $target_dir . $target_file);
+    //Plaats geuploade bestand in map (alleen als er een bestand is gekozen)
+    if(!empty($target_file)) {
+        move_uploaded_file($_FILES['img_file']['tmp_name'], $target_dir . $target_file);
+    }
 
-    //Query
+    //Query - OPDRACHT: Uitgebreid met description en min_length
     require_once 'conn.php';
-    $query = "INSERT INTO rides (title, themeland, fast_pass, img_file) VALUES(:title, :themeland, :fast_pass, :img_file)";
+    $query = "INSERT INTO rides (title, description, themeland, min_length, fast_pass, img_file) VALUES(:title, :description, :themeland, :min_length, :fast_pass, :img_file)";
     $statement = $conn->prepare($query);
     $statement->execute([
         ":title" => $title,
+        ":description" => $description,
         ":themeland" => $themeland,
+        ":min_length" => $min_length,
         ":fast_pass" => $fast_pass,
         ":img_file" => $target_file,
     ]);
 
-    header("Location: ../attracties/index.php");
+    header("Location: ../admin/attracties/index.php");
     exit;
 }
 
@@ -70,6 +78,21 @@ if($action == "update")
     $id = $_POST['id'];
     $title = $_POST['title'];
     $themeland = $_POST['themeland'];
+    
+    // OPDRACHT: Validatie toegevoegd bij het aanpassen van een attractie
+    if(empty($title))
+    {
+        $errors[] = "Vul een titel in!";
+    }
+    if(empty($themeland))
+    {
+        $errors[] = "Vul een themagebied in!";
+    }
+
+    // OPDRACHT: Data opvangen van de nieuwe velden
+    $description = $_POST['description'];
+    $min_length = !empty($_POST['min_length']) ? intval($_POST['min_length']) : null;
+
     if(isset($_POST['fast_pass']))
     {
         $fast_pass = true;
@@ -96,26 +119,28 @@ if($action == "update")
         move_uploaded_file($_FILES['img_file']['tmp_name'], $target_dir . $target_file);
     }
 
-    //Evt. errors dumpen
+    // FIX: Zorgt ervoor dat de validatiefouten bij het aanpassen ook echt getoond worden en het script stopt
     if(isset($errors))
     {
         var_dump($errors);
         die();
     }
 
-    //Query
+    //Query - OPDRACHT: Uitgebreid met description en min_length
     require_once 'conn.php';
-    $query = "UPDATE rides SET title = :title, themeland = :themeland, fast_pass = :fast_pass, img_file = :img_file WHERE id = :id";
+    $query = "UPDATE rides SET title = :title, description = :description, themeland = :themeland, min_length = :min_length, fast_pass = :fast_pass, img_file = :img_file WHERE id = :id";
     $statement = $conn->prepare($query);
     $statement->execute([
         ":title" => $title,
+        ":description" => $description,
         ":themeland" => $themeland,
+        ":min_length" => $min_length,
         ":fast_pass" => $fast_pass,
         ":img_file" => $target_file,
         ":id" => $id
     ]);
 
-    header("Location: ../attracties/index.php");
+    header("Location: ../admin/attracties/index.php");
     exit;
 }
 
@@ -128,6 +153,6 @@ if($action == "delete")
     $statement->execute([
         ":id" => $id
     ]);
-    header("Location: ../attracties/index.php");
+    header("Location: ../admin/attracties/index.php");
     exit;
 }

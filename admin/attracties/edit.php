@@ -39,15 +39,23 @@ if(!isset($_SESSION['user_id']))
         $ride = $statement->fetch(PDO::FETCH_ASSOC);
         ?>
 
-        <form action="../backend/ridesController.php" method="POST">
+        <!-- FIX: enctype="multipart/form-data" toegevoegd zodat de file-upload (afbeelding) werkt -->
+        <form action="../backend/ridesController.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="action" value="update">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <input type="hidden" name="old_img" value="<?php echo $ride['img_file']; ?>">
 
             <div class="form-group">
                 <label for="title">Titel:</label>
-                <input type="text" name="title" id="title" class="form-input" value="<?php echo $ride['title']; ?>">
+                <input type="text" name="title" id="title" class="form-input" value="<?php echo htmlentities($ride['title']); ?>">
             </div>
+            
+            <!-- OPDRACHT: Beschrijving (description) toegevoegd -->
+            <div class="form-group">
+                <label for="description">Beschrijving:</label>
+                <textarea name="description" id="description" class="form-input" rows="5"><?php echo htmlentities($ride['description']); ?></textarea>
+            </div>
+
             <div class="form-group">
                 <label for="themeland">Themagebied:</label>
                 <select name="themeland" id="themeland" class="form-input">
@@ -57,14 +65,21 @@ if(!isset($_SESSION['user_id']))
                     <option value="adventureland" <?php if($ride['themeland'] == 'adventureland') echo 'selected'; ?>>Adventureland</option>
                 </select>
             </div>
+
+            <!-- OPDRACHT: Minimale lengte (min_length) toegevoegd -->
+            <div class="form-group">
+                <label for="min_length">Minimale lengte (in cm):</label>
+                <input type="number" name="min_length" id="min_length" class="form-input" min="0" value="<?php echo htmlentities($ride['min_length']); ?>">
+            </div>
+
             <div class="form-group">
                 <label for="img_file">Afbeelding:</label>
-                <img src="<?php echo $base_url . "/img/attracties/" . $ride['img_file']; ?>" alt="attractiefoto" style="max-width: 120px;">
+                <img src="<?php echo $base_url . "/img/attracties/" . $ride['img_file']; ?>" alt="attractiefoto" style="max-width: 120px; display: block; margin-bottom: 10px;">
                 <input type="file" name="img_file" id="img_file" class="form-input">
             </div>
             <div class="form-group">
                 <label for="fast_pass">FAST PASS:</label>
-                <input type="checkbox" name="fast_pass" id="fast_pass" <?php if($ride['fast_pass']) echo 'checked'; ?>>
+                <input type="checkbox" name="fast_pass" id="fast_pass" value="1" <?php if($ride['fast_pass']) echo 'checked'; ?>>
                 <label for="fast_pass">Voor deze attractie is een FAST PASS nodig.</label>
             </div>
 
